@@ -2,37 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const feedbackSchema = new mongoose.Schema(
+const chatSchema = new mongoose.Schema(
     {
-        stars: {
-            type: Number,
-            default: 0,
-            required: true,
-        },
-
-        reviews: {
-            type: Number,
-            default: 1,
-            required: true,
-        },
-
-        createdBy: {
+       
+        from: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
             required: true,
         },
 
-        sentTo: {
+        to: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
             required: true,
-        },
-
-        rental: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Rental',
-            required: true,
-            
         },
 
         message: {
@@ -63,6 +45,5 @@ const feedbackSchema = new mongoose.Schema(
 }
 );
 
-const Feedback = mongoose.model('Feedback', feedbackSchema);
-module.exports = Feedback;
-
+const Chat = mongoose.model('Chat', chatSchema);
+module.exports = Chat;

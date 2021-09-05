@@ -1,0 +1,81 @@
+[ 
+
+      {
+        "name": "GoPro HERO7 Silver",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841936/Bye-Buy/film-photography_kmtnx5.png",
+        "categories": "film-photography"
+      },
+      {
+        "name": "RailDolly Camera Dolly Kit",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841929/Bye-Buy/audio-visual-equip_3_v92acq.png",
+        "categories": "audio-visual-equipment"
+      },
+      {
+        "name": "Smart Streaming Laser Projector",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841935/Bye-Buy/projectors-screen_2_abzjzp.png",
+        "categories": "projectors-screens"
+      },
+      {
+        "name": "Drone DJI Air 2S",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841934/Bye-Buy/drones_3_hcc2se.png",
+        "categories": "drones"
+      },
+      {
+        "name": "Denon DJ Prime 2 Standalone DJ System",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841932/Bye-Buy/dj-equipment_2_htpvws.png",
+        "categories": "dj-equipment"
+      },
+      {
+        "name": "Unicyle Electric Scooter Xyout",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841942/Bye-Buy/transport_8_pxbszr.png",
+        "categories": "transport"
+      },
+      {
+        "name": "Store your belongings securely",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841941/Bye-Buy/storage_upizsl.png",
+        "categories": "storage"
+      },
+      {
+        "name": "Sony PlayStation 5",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841936/Bye-Buy/electronics_ljc67e.png",
+        "categories": "electronics"
+      },
+      {
+        "name": "Bio Ethanol Fireplace",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841934/Bye-Buy/party_4_fygolq.png",
+        "categories": "party-events"
+      },
+      {
+        "name": "Atomic Freeride skis/powder skis",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841937/Bye-Buy/sports_3_yskdxt.png",
+        "categories": "sports"
+      },
+      {
+        "name": "Fender Squier Stratocaster Electric Guitar Set",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841932/Bye-Buy/musical_instr_2_ygyes9.png",
+        "categories": "musical-instruments"
+      },
+      {
+        "name": "BLACK+DECKER 12V MAX Drill & Home Tool Kit, 60-Piece",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841941/Bye-Buy/home_4_bdlhjk.png",
+        "categories": "home-office-garden"
+      },
+      {
+        "name": "Deuter Kid Comfort Child Carrier",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841933/Bye-Buy/kids_dixy9n.png",
+        "categories": "kids-baby"
+      },
+      {
+        "name": "KERON 3 GT Tent",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841940/Bye-Buy/holiday_fzqpak.png",
+        "categories": "holiday-travel"
+      },
+      {
+        "name": "Peak Lapel Tuxedo",
+        "image": "https://res.cloudinary.com/dnhoxil9i/image/upload/v1630841932/Bye-Buy/clothing_wqhq7i.png",
+        "categories": "clothing"
+      }
+
+]
+
+
