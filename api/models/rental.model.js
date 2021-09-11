@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
 const rentalSchema = new mongoose.Schema({
 
     item: {
@@ -16,6 +17,15 @@ const rentalSchema = new mongoose.Schema({
         required: true,
 
     },
+
+
+    tenant: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+
+    },
+
 
     startDate: {
         type: Date,
@@ -34,6 +44,28 @@ const rentalSchema = new mongoose.Schema({
     },
 
 
+}, {
+    timestamps: true,
+
+    toJSON: {
+        virtuals: true,
+        transform: (doc, ret) => {
+            ret.id = doc._id;
+            delete ret._id;
+            delete ret.__v;
+            return ret
+        }
+
+    },
+
+    toObject: {
+        transform: (doc, ret) => {
+            ret.id = doc._id;
+            delete ret._id;
+            delete ret.__v;
+            return ret
+        }
+    }
 
 })
 

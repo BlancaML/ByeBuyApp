@@ -2,20 +2,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const chatSchema = new mongoose.Schema(
+const messageSchema = new mongoose.Schema(
     {
-        users: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'User'
-            }
-        ],
-        messages: [
-            {
-                type: mongoose.Schema.Types.ObjectId, //<--virtual
-                ref: 'Message'
-            }
-        ]
+        text : {
+            type: String,
+            required: true
+        },
+        
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+            
+        },
+
+        chat: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Chat'
+        }
   },
     { 
      timestamps : true,
@@ -41,12 +44,5 @@ const chatSchema = new mongoose.Schema(
 }
 );
 
-chatSchema.virtual('messageCreator', {
-    ref: 'Message',
-    localField: '_id',
-    foreignField: 'user',
-    justOne: false,
-})
-
-const Chat = mongoose.model('Chat', chatSchema);
-module.exports = Chat;
+const Message = mongoose.model('Message', messageSchema);
+module.exports = Message;
