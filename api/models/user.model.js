@@ -39,17 +39,17 @@ const userSchema = new Schema({
         google: String,
     },
 
-    location: {
-        type: {
-            type: String,
-            enum: ['Point'],
-            default: 'Point'
-        },
-        coordinates: {
-            type: [Number],
-            required: true
-        }
-    },
+    // location: {
+    //     type: {
+    //         type: String,
+    //         enum: ['Point'],
+    //         default: 'Point'
+    //      },
+    //      coordinates: {
+    //          type: [Number],
+            
+    //      }
+    // },
 
     active: {
         type: Boolean,

@@ -45,7 +45,8 @@ router.delete('/items/:id', secure.isAuthenticated, item.exists, item.isRenter, 
 // RENTAL
 
 router.post('/items/:itemId/rentals', secure.isAuthenticated, item.exists, rentals.create);
-// midware rental de exists  ---- 
+
+// error --- isOwner --- you are not allowed to access to this rental 
 router.get(
     '/items/:itemId/rentals/:id', 
     secure.isAuthenticated, 
@@ -55,7 +56,7 @@ router.get(
     rental.isAvailable,
     rentals.detail
 ); 
-// midware rental de isOwner ----- 
+
 router.delete('/items/:itemId/rentals/:id', 
     secure.isAuthenticated,
     rental.exists, 
