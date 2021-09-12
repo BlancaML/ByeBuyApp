@@ -1,0 +1,139 @@
+/* .intro-box{
+    width: 500px;
+    height: 500px;
+    border-radius: 100%;
+    color: black;
+    
+} */
+
+
+.img-buyee {
+  margin-left: 120px;
+}
+
+.black-box {
+  border-radius: 30px;
+}
+
+@media (min-width: 992px) {
+    .intro-box {
+        padding: 1rem 1rem;
+    }
+    
+    
+}
+
+@media (min-width: 768px) {
+    .intro-box {
+        padding: 1rem 1rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .intro-box {
+        padding: 1rem 1rem;
+    }
+    .carrousel {
+        display: none;
+    }
+    
+}
+
+h1 {
+  text-indent: 8px;
+}
+
+
+.animated {
+    text-indent: 8px;
+  }
+  
+  .animated span {
+    color: rgb(9, 231, 247);
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    -ms-animation: topToBottom 6s infinite;
+    -webkit-animation: topToBottom 6s infinite;
+    animation: topToBottom 6s infinite;
+  }
+  
+  .animated span:nth-child(2){
+    -ms-animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+  }
+  
+  .animated span:nth-child(3){
+    -ms-animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+  }
+  
+  .animated span:nth-child(4){
+    -ms-animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+  }
+  
+  .animated span:nth-child(5){
+    -ms-animation-delay: 4s;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+  }
+
+  .animated span:nth-child(6){
+    -ms-animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
+  }
+  
+  
+  @keyframes topToBottom {
+    0%, 12% {opacity: 1} /* visible for 1s */
+    12.01%, 100% {opacity: 0} /* hidden for 4s */
+  }
+
+
+
+/* h2 {
+    display: block;
+    
+}
+.rotatingText-adjective {
+    color: #07e7f7;
+    animation: 2.5s ease 0.75s 1 normal none running rotate-text-up;
+    width: 100%;
+    left: 0px;
+    opacity: 0;
+    position: relative;
+    right: 0px;
+    animation-iteration-count: infinite;
+    
+
+}
+
+@keyframes rotate-text-up {
+    0% {
+        transform: translate3d(0px, 80px, 0px);
+        opacity: 0;
+       
+    }
+    
+    20%, 80% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+    }
+   
+    100% {
+        transform: translate3d(0px, -40px, 0px);
+        opacity: 0;
+    }
+
+}
+ */
+
+
+
+

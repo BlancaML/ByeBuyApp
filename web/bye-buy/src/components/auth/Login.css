@@ -1,0 +1,40 @@
+.black-box {
+    border-radius: 30px;
+  }
+
+  .bg-app-bg {
+      color:white;
+  }
+
+.btn:focus {
+    outline:0;
+    box-shadow: none;
+}
+
+.btn-white {
+    border: 1px solid grey;
+    color: white;
+}
+
+.btn-grey:hover {
+    background-color: rgb(9, 232, 248);
+    color: white
+}
+
+.btn-white:hover {
+    background-color: rgb(9, 231, 247);
+    color: black;
+    border: none;
+}
+
+.eye-btn {
+    border: 1px solid grey;
+}
+
+.fa-eye {
+    color: white;
+}
+
+.fa-eye-slash {
+    color: grey;
+}
