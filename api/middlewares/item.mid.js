@@ -6,7 +6,11 @@ const Item = require('../models/item.model');
 module.exports.exists = (req, res, next) => {
   const id = req.params.itemId || req.params.id;
   Item.findById(id)
-    .populate('renter')
+      .populate({
+        path: 'renter',
+        select: 'name avatar email'
+        
+    })
     .then(item => {
       if (item) {
         req.item = item;

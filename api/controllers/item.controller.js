@@ -11,6 +11,18 @@ module.exports.list = (req, res, next) => {
        
 }
 
+module.exports.detail = (req, res, next) => {
+    Item.findById(req.params.id)
+    // .populate({
+    //     path: 'renter',
+    //     select: 'name avatar email'
+        
+    // })
+    .then(item => res.status(200).json(item))
+    .catch(next)
+
+}
+
 
 module.exports.create = (req, res, next) => {
     const data = { name, description, cost, image, location, categories } = req.body

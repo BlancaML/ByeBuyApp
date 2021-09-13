@@ -8,12 +8,51 @@
 
 
 .img-buyee {
-  margin-left: 120px;
+  margin-left: 90px;
+
+}
+
+.welcome-name {
+  color: rgb(9, 231, 247);
 }
 
 .black-box {
   border-radius: 30px;
 }
+
+
+
+.list-item-link {
+  border: 1px solid grey;
+  color: white;
+  text-decoration: none;
+}
+
+.list-item-link:hover {
+  background-color: grey;
+  color: black;
+  border: none;
+}
+
+.browse-item-link {
+  background-color:white;
+  border: 1px solid grey;
+  color: black;
+  text-decoration: none;
+
+}
+
+.browse-item-link:hover {
+  background-color: rgb(9, 231, 247);
+  border: 1px solid grey;
+  color: black;
+  text-decoration: none;
+}
+
+
+
+
+
 
 @media (min-width: 992px) {
     .intro-box {
@@ -34,6 +73,7 @@
     .intro-box {
         padding: 1rem 1rem;
     }
+    
     .carrousel {
         display: none;
     }
@@ -42,6 +82,16 @@
 
 h1 {
   text-indent: 8px;
+  font-size: 56px;
+}
+
+h2 {
+  text-indent: 8px;
+  font-size: 46px;
+}
+
+h3 {
+  line-height: 1.6;
 }
 
 

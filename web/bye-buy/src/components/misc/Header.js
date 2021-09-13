@@ -21,10 +21,12 @@ function Header() {
   return (
     <nav className="navbar navbar-light bg-white shadow-navbar fixed-top mb-3">
       <div className="container-fluid">
+        <Link to='/'>
         <img src={logonavbar} style={{maxWidth: "150px"}} className="img" alt="logo-Bye-Buy"/>
+        </Link>
           <div className="flex-row">
             <span className="me-3">{auth.user?.name}</span>
-            <img className="flex-row me-3 avatar-img"src={auth.user?.avatar}/>
+            <img className="flex-row me-3 avatar-img"src={auth.user?.avatar} alt={auth.user?.name}/>
         
             {!auth.user && (
               <div className="container-fluid d-flex flex-row bd-highlight">
