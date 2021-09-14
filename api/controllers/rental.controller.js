@@ -25,12 +25,18 @@ module.exports.detail = (req, res, next) => {
   }
 
 
-
 module.exports.delete = (req, res, next) => {
     Rental.deleteOne({ _id: req.rental.id })
       .then(() => res.status(204).send())
       .catch(error => next(error))
   }
+
+//   module.exports.update = (req, res, next) => {
+//     const { id } = req.params;
+//     Rental.findByIdAndUpdate(id, req.body, { new: true })
+//       .then(rental => res.status(202).json(rental))
+//       .catch(next)
+//   }
 
 
 

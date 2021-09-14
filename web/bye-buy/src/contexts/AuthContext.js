@@ -25,10 +25,19 @@ export function AuthContextProvider({ children }) {
     setUser(null)
   }
 
+
+  function getProfile() {
+    service.profile()
+        .then((user) => {
+            setUser(user)
+        })
+}
+
   const value = {
     user,
     login,
-    logout
+    logout,
+    getProfile
   }
 
   return (

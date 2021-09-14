@@ -9,7 +9,7 @@ const create = (item) => http.post('/items', item);
 
 const update = (id) => http.patch(`/items/${id}`);
 
-const remove = (id) => http.delete(`/contacts/${id}`);
+const remove = (id) => http.delete(`/items/${id}`);
 
 
 const createItem = (item) => {

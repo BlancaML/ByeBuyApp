@@ -44,12 +44,8 @@ router.delete('/items/:id', secure.isAuthenticated, item.exists, item.isRenter, 
 
 
 // RENTAL
-
 router.post('/items/:itemId/rentals', secure.isAuthenticated, item.exists, rentals.create);
-
-// error --- isOwner --- you are not allowed to access to this rental 
-router.get(
-    '/items/:itemId/rentals/:id', 
+router.get('/items/:itemId/rentals/:id', 
     secure.isAuthenticated, 
     item.exists, 
     rental.exists, 
@@ -63,8 +59,6 @@ router.delete('/items/:itemId/rentals/:id',
     rental.exists, 
     rental.isOwner, 
     rentals.delete);
-
-
 
 
 // FEEDBACK

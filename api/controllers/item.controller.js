@@ -6,6 +6,11 @@ const User = require('../models/user.model')
 
 module.exports.list = (req, res, next) => {
     Item.find()
+    .populate({
+        path: 'renter',
+        select: 'name avatar email'
+        
+    })
       .then(items => res.json(items))
       .catch(error => next (error))
        
@@ -13,11 +18,12 @@ module.exports.list = (req, res, next) => {
 
 module.exports.detail = (req, res, next) => {
     Item.findById(req.params.id)
-    // .populate({
-    //     path: 'renter',
-    //     select: 'name avatar email'
+    .populate({
+        path: 'renter',
+        select: 'name avatar email'
         
-    // })
+    })
+
     .then(item => res.status(200).json(item))
     .catch(next)
 
