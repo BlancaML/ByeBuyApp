@@ -21,7 +21,7 @@ function App() {
                 <Header/>
                 <Route exact path="/" component={HomeLogout} />
                 <Route exact path="/items" component={ItemList}/>
-                <Route exact path="/items/:id" component={ItemPage} /> 
+                <Route exact path="/items/:id/rentals" component={ItemPage} /> 
               </div>
             </Switch>
             <Footer/>

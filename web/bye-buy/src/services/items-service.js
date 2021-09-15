@@ -27,6 +27,7 @@ const createItem = (item) => {
 }
 
 const service = {
+  createItem,
   list,
   detail,
   create,

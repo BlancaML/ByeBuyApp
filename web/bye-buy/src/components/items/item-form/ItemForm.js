@@ -2,17 +2,13 @@ import { useForm } from 'react-hook-form';
 
 import itemsService from '../../../services/items-service';
 
-// import PlacesAutocomplete from 'react-places-autocomplete';
-// import {
-//     geocodeByAddress,
-//     geocodeByPlaceId,
-//     getLatLng,
-//   } from 'react-places-autocomplete';
+import LocationInput from './LocationInput';
 
 // ON SELECT: https://www.npmjs.com/package//react-places-autocomplete
 
 
 function ItemForm({ onCreateItem }) {
+  // const [state, setState] = useState({ categories: []})
 
   const { register, handleSubmit, setError, setValue, watch, reset, formState: 
     { errors, isValid, isDirty } } = useForm({
@@ -41,17 +37,20 @@ function ItemForm({ onCreateItem }) {
   return (
     <div className="row mb-3">
       <div className="mt-5 d-flex justify-content-center">
+      
         <form onSubmit={handleSubmit(onCreateItemFormSubmit)}>
-
+        <div className="input-group mb-3 justify-content-center">
+            <h2 classname="">List your Item...</h2>
+          </div>
           <div className="input-group mb-3">
-            <span className="input-group-text"><i className="fa fa-user fa-fw" /></span>
+            <span className="input-group-text">👁‍🗨</span>
             <input type="text" {...register("name", { required: 'Item name is required' })} 
               className={`form-control ${errors.name ? 'is-invalid' : ''}`} placeholder="Item name.."  />
             {errors.name && <div className="invalid-feedback">{errors.name.message}</div>}
           </div>
 
           <div className="input-group mb-3">
-            <span className="input-group-text"><i className="fas fa-arrow-alt-circle-right" /></span>
+            <span className="input-group-text">📝</span>
             <input type="text" {...register("description", { required: 'Description is required' })} 
               className={`form-control ${errors.description ? 'is-invalid' : ''}`} placeholder="Describe your item" />
             {errors.description && <div className="invalid-feedback">{errors.description.message}</div>}
@@ -59,8 +58,7 @@ function ItemForm({ onCreateItem }) {
 
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-                <span className="input-group-text">$</span>
-                <span className="input-group-text">0.00</span>
+                <span className="input-group-text">€</span>
             </div>
             <input type="text" {...register("cost", { required: 'Cost per day is required' })}
               className={`form-control ${errors.cost ? 'is-invalid' : ''}`} placeholder="Cost per day" />
@@ -68,7 +66,7 @@ function ItemForm({ onCreateItem }) {
           </div>
 
           <div className="input-group mb-3">
-            <span className="input-group-text"><i className="fa fa-user fa-fw"></i></span>
+            <span className="input-group-text">📷</span>
             <input type="file" {...register("image", { required: 'Image is required' })}
               className={`form-control ${errors.image ? 'is-invalid' : ''}`} placeholder="Add an image" />
             {errors.image && <div className="invalid-feedback">{errors.image.message}</div>}
@@ -77,23 +75,43 @@ function ItemForm({ onCreateItem }) {
 
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-                <label className="input-group-text" for="inputGroupSelect01">Options</label>
+                <label className="input-group-text" for="inputGroupSelect01">Categories</label>
             </div>
-            <select className="custom-select" id="inputGroupSelect01">
+            <select className="custom-select" id="inputGroupSelect01" {...register("categories", { required: 'At least 1 Category is required' })}
+            className={`form-control ${errors.categories ? 'is-invalid' : ''}`} placeholder="Categories">
                 <option selected>Choose at least 1 category...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="audio-visual-equipment">Audiovisual Equipment</option>
+                <option value="clothing">Clothing</option>
+                <option value="dj-equipment">DJ Equipment</option>
+                <option value="drones">Drones</option>
+                <option value="electronics">Electronics</option>
+                <option value="film-photography">Film and photography</option>
+                <option value="holiday-travel">Holyday and Travel</option>
+                <option value="home-office-garden">Home and Garden</option>
+                <option value="kids-baby">Kids</option>
+                <option value="musical-instruments">Musical Instruments</option>
+                <option value="projectors-screens">Projectors and Screens</option>
+                <option value="party-events">Party and Events</option>
+                <option value="sports">Sports</option>
+                <option value="storage">Storage</option>
+                <option value="transport">Transport</option>
+                {errors.categories && <div className="invalid-feedback">{errors.categories.message}</div>}  
             </select>
-            <input type="text" {...register("categories", { required: 'At least 1 Category is required' })}
-              className={`form-control ${errors.categories ? 'is-invalid' : ''}`} placeholder="Categories" />
-            {errors.categories && <div className="invalid-feedback">{errors.categories.message}</div>}
+          </div>
+
+          <div className="input-group mb-3">
+          <LocationInput>
+            <span className="input-group-text">📍</span>
+            <input type="file" {...register("image", { required: 'location is required' })}
+              className={`form-control ${errors.location ? 'is-invalid' : ''}`}/>
+            {errors.location && <div className="invalid-feedback">{errors.location.message}</div>}
+            </LocationInput>
           </div>
 
 
           <div className="row justify-content-center">
-            <div className="col-12 col-sm-4">
-              <button className="mt-3 p-3 badge bg-dark text-white rounded-pill" disabled={!isDirty || !isValid}>Submit your Item</button>
+            <div className="col-12 col-sm-6">
+              <button className="mt-3 p-3 bg-dark text-white rounded-pill" disabled={!isDirty || !isValid}><b>Submit your item</b></button>
             </div>
           </div>
         </form>

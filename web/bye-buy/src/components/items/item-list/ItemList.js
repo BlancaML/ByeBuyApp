@@ -1,12 +1,15 @@
 import ItemDetail from '../item-detail/ItemDetail';
-import ItemForm from '../item-form/ItemForm';
+
 
 import { useCallback, useEffect, useState } from 'react';
 import itemsService from '../../../services/items-service';
-
+import SearchBar from '../search/SearchBar';
 
 function ItemList() {
   const [state, setState] = useState({ items: [], isLoading: true});
+
+  // const [search, setSearch] = useState('');
+
   const [fetch, handleFetch] = useState(false); // es un boolean , quiero que cambie de valor para que se ejecute el use effect. 
 
 
@@ -44,6 +47,15 @@ function ItemList() {
     setState({ items: [item, ...state.items]})
   }, [state])
 
+
+// const getFilteredList = items =>
+//     items.filter(item =>
+//       item.name.toLowerCase().includes(setSearch.toLowerCase())
+//     )
+
+//   getResultList = () => getFilteredList()
+
+
   
 
   const { items, isLoading } = state;
@@ -54,6 +66,7 @@ function ItemList() {
        
         {isLoading ? (<i className="fa fa-gear fa-spin"></i>) : (
             <div className="container mt-5">
+              <SearchBar/> 
                 <div className="d-flex row">
                     {items.map(item => (
                       <div className="col-4 mb-4"key={item.id}>
@@ -63,11 +76,7 @@ function ItemList() {
                </div>
             </div>
        )}
-         <div className="row mb-2">
-          <div className="col">
-            <ItemForm onCreateItem={handleCreateItem} />
-          </div>
-        </div>
+         
 
 
     </>

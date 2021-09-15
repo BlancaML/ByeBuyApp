@@ -36,6 +36,7 @@ router.delete('/users/:id', secure.isAuthenticated, secure.isUser, users.delete)
 
 // ITEM
 router.get('/items', secure.isAuthenticated, items.list);
+router.get('/items', secure.isAuthenticated, items.filter);
 router.get('/items/:id', secure.isAuthenticated, item.exists, items.detail);
 router.post('/items', secure.isAuthenticated, upload.single('image'), items.create );
 router.patch('/items/:id', secure.isAuthenticated, item.exists, item.isRenter, items.update);

@@ -16,6 +16,32 @@ module.exports.list = (req, res, next) => {
        
 }
 
+module.exports.filter = (req,res,next) => {
+    const { search, categories } = req.query;
+    const criterial = {}
+    if (search || categories) {
+       criterial.$and = [] 
+    }
+
+    if (search) {
+        criterial.$and.push({$or:[{
+                name: new RegExp(search, 'i')
+            },
+            {
+                description: new RegExp(search, 'i')
+            }
+        ]       })
+    } 
+    if (categories) {
+        criterial.$and.push({categories : categories})
+    }
+
+    Item.find(criterial)
+        .then((items) => res.json(items, { search }))
+        .catch((error) => next(error));
+}
+
+
 module.exports.detail = (req, res, next) => {
     Item.findById(req.params.id)
     .populate({
