@@ -1,4 +1,4 @@
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 // import ItemList from './components/contacts/contact-list/ItemList';
 // import ItemDetails from './components/contacts/contact-details/ItemDetails';
 import Header from './components/misc/Header';

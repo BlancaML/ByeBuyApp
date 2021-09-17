@@ -1,29 +1,22 @@
 import { useContext } from "react"
-import { useHistory } from "react-router-dom"
 import { AuthContext } from "../../contexts/AuthContext"
 import '../home/Homelogout.css'
 import backgroundImage from '../../img/33.png';
 import buyee from '../../img/buyee.png';
 import { Link } from 'react-router-dom';
 import ItemForm from '../../components/items/item-form/ItemForm';
-import { useCallback, useEffect, useState } from 'react';
-import itemsService from '../../services/items-service';
+import { useCallback, useState } from 'react';
+
 
 
 function HomeLogout() {
-     const history = useHistory()
+     
      const auth = useContext(AuthContext)
      const [state, setState] = useState({ items: [], isLoading: true});
-     const [fetch, handleFetch] = useState(false);
+ 
      const [showForm, setShowForm] = useState(false)
 
-     const fetchItems = useCallback(() => handleFetch(!fetch), [fetch])
-
-     const handleDeleteItem = useCallback((id) => {
-          itemsService.remove(id)
-            .then(() => fetchItems())
-            .catch(error => console.error(error));
-        }, [fetchItems])
+    
 
      const handleCreateItem = useCallback((item) => {
           setState({ items: [item, ...state.items]})

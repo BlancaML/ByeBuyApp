@@ -12,7 +12,7 @@ function ItemDetail({ id, name, description, cost, categories, image, location }
                                 <h5 className="card-title">{name}</h5>
                                     {description && <h6 className="card-title">{description}</h6>}
                             </div>
-                            <div class="card-footer">
+                            <div className="card-footer">
                                     {cost && <small className="text-muted">💰 {cost}€/day </small>}
                             </div>
                                 

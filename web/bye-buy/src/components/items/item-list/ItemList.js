@@ -1,24 +1,26 @@
 import ItemDetail from '../item-detail/ItemDetail';
 
 
-import { useCallback, useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import itemsService from '../../../services/items-service';
 import SearchBar from '../search/SearchBar';
 
 function ItemList() {
   const [state, setState] = useState({ items: [], isLoading: true});
 
-  // const [search, setSearch] = useState('');
+  const [search, setSearch] = useState('');
 
-  const [fetch, handleFetch] = useState(false); // es un boolean , quiero que cambie de valor para que se ejecute el use effect. 
+  const [currentCategory, setCurrentCategory] = useState();
+
+  // const [fetch, handleFetch] = useState(false); // es un boolean , quiero que cambie de valor para que se ejecute el use effect. 
 
 
-  const fetchItems = useCallback(() => handleFetch(!fetch), [fetch])
+  // const fetchItems = useCallback(() => handleFetch(!fetch), [fetch]) // use callback hay que importarlo  desde arriba 
 
 
   useEffect(() => {
     let isMounted = true;
-    itemsService.list()
+    itemsService.filterItem(search, currentCategory)
       .then(items => {
         if (isMounted) {
           setState({ items, isLoading: false});
@@ -32,20 +34,22 @@ function ItemList() {
         
       }) 
       return () => isMounted = false
-  }, [fetch])
+  }, [search, currentCategory])
+
+  // [fetch, search, currentCategory])
 
 
   
-  const handleDeleteItem = useCallback((id) => {
-    itemsService.remove(id)
-      .then(() => fetchItems())
-      .catch(error => console.error(error));
-  }, [fetchItems])
+  // const handleDeleteItem = useCallback((id) => {
+  //   itemsService.remove(id)
+  //     .then(() => fetchItems())
+  //     .catch(error => console.error(error));
+  // }, [fetchItems])
 
 
-  const handleCreateItem = useCallback((item) => {
-    setState({ items: [item, ...state.items]})
-  }, [state])
+  // const handleCreateItem = useCallback((item) => {
+  //   setState({ items: [item, ...state.items]})
+  // }, [state])
 
 
 // const getFilteredList = items =>
@@ -66,11 +70,12 @@ function ItemList() {
        
         {isLoading ? (<i className="fa fa-gear fa-spin"></i>) : (
             <div className="container mt-5">
-              <SearchBar/> 
+              <SearchBar search={search} setSearch={setSearch} 
+              categories={currentCategory} setCurrentCategory={setCurrentCategory}/> 
                 <div className="d-flex row">
                     {items.map(item => (
                       <div className="col-4 mb-4"key={item.id}>
-                          <ItemDetail {...item}  onDeleteItem={handleDeleteItem}/>
+                          <ItemDetail {...item}/>
                       </div>
                       ))}
                </div>

@@ -48,6 +48,3 @@ function Header() {
 }
 
 export default Header
-
-{/* <span className="me-3">{auth.user?.name}</span>, */}
-            //   <img className="me-3 avatar-img"src={auth.user?.avatar}/>,

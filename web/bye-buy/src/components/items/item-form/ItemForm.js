@@ -1,16 +1,14 @@
 import { useForm } from 'react-hook-form';
-
+import {useState} from 'react'
 import itemsService from '../../../services/items-service';
 
-import LocationInput from './LocationInput';
 
-// ON SELECT: https://www.npmjs.com/package//react-places-autocomplete
 
 
 function ItemForm({ onCreateItem }) {
-  // const [state, setState] = useState({ categories: []})
+  const [currentCategory, setCurrentCategory] = useState([])
 
-  const { register, handleSubmit, setError, setValue, watch, reset, formState: 
+  const { register, handleSubmit, setError, reset, formState: 
     { errors, isValid, isDirty } } = useForm({
     mode: 'all'});
 
@@ -32,7 +30,7 @@ function ItemForm({ onCreateItem }) {
         }
       })
   };
-
+  console.log(currentCategory)
 
   return (
     <div className="row mb-3">
@@ -40,7 +38,7 @@ function ItemForm({ onCreateItem }) {
       
         <form onSubmit={handleSubmit(onCreateItemFormSubmit)}>
         <div className="input-group mb-3 justify-content-center">
-            <h2 classname="">List your Item...</h2>
+            <h2 className="">List your Item...</h2>
           </div>
           <div className="input-group mb-3">
             <span className="input-group-text">👁‍🗨</span>
@@ -74,12 +72,15 @@ function ItemForm({ onCreateItem }) {
 
 
           <div className="input-group mb-3">
-            <div className="input-group-prepend">
-                <label className="input-group-text" for="inputGroupSelect01">Categories</label>
-            </div>
-            <select className="custom-select" id="inputGroupSelect01" {...register("categories", { required: 'At least 1 Category is required' })}
-            className={`form-control ${errors.categories ? 'is-invalid' : ''}`} placeholder="Categories">
-                <option selected>Choose at least 1 category...</option>
+          <span className="input-group-text" id="basic-addon1">🔎</span>
+            <select
+              value={currentCategory}
+              onChange={(e) => setCurrentCategory(e.target.value)} 
+              id="inputGroupSelect01" 
+              {...register("categories", { required: 'At least 1 Category is required' })}
+              className={`form-select form-select-sm ${errors.categories ? 'is-invalid' : ''}`} 
+              placeholder="Categories">
+                <option >Choose at least 1 category...</option>
                 <option value="audio-visual-equipment">Audiovisual Equipment</option>
                 <option value="clothing">Clothing</option>
                 <option value="dj-equipment">DJ Equipment</option>
@@ -95,17 +96,7 @@ function ItemForm({ onCreateItem }) {
                 <option value="sports">Sports</option>
                 <option value="storage">Storage</option>
                 <option value="transport">Transport</option>
-                {errors.categories && <div className="invalid-feedback">{errors.categories.message}</div>}  
             </select>
-          </div>
-
-          <div className="input-group mb-3">
-          <LocationInput>
-            <span className="input-group-text">📍</span>
-            <input type="file" {...register("image", { required: 'location is required' })}
-              className={`form-control ${errors.location ? 'is-invalid' : ''}`}/>
-            {errors.location && <div className="invalid-feedback">{errors.location.message}</div>}
-            </LocationInput>
           </div>
 
 

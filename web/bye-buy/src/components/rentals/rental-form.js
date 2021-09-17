@@ -1,19 +1,28 @@
 import rentalsService from '../../services/rentals-service';
-import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { DatePicker } from 'antd';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import 'antd/dist/antd.css';
+// import Moment from 'moment';
 
 const { RangePicker } = DatePicker;
 
 
 function RentalForm({ onCreateRental }) {
 
-  const { register, handleSubmit, setError, 
-    formState: { errors, isValid, isDirty}} = useForm({ mode: 'all'});
+  const { id } = useParams()
 
+  const [dates, setDates] = useState({ startDate: null, endDate: null});
+
+  const [showMessage, setShowMessage] = useState(false)
+ 
   
-  const onCreateRentalFormSubmit = rental => {
-    rentalsService.create(rental)
+  const onClickCreateRental = () => {
+
+    const { startDate, endDate} = dates;
+    if (startDate && endDate) {
+      rentalsService.create(id, dates)
       .then(rental => {
         onCreateRental(rental)
         
@@ -21,47 +30,47 @@ function RentalForm({ onCreateRental }) {
       .catch(error => {
         const { message, errors } = error.response?.data || error;
         if (errors) {
-          Object.keys(errors).forEach(input => {
-            setError(input, { type: 'manual', message: errors[input] });
-          })
+         console.log(error)
         } else {
-          setError('name', { type: 'manual', message: message });
+          console.log(message)
         }
       })
-
+    }
   }
 
-  
-
     return (
-      <div className="container">
-        <div className="mt-5 d-flex justify-content-center">
-          <form onSubmit={handleSubmit(onCreateRentalFormSubmit)}>
-            <RangePicker showTime/>
-            <div className="input-group mb-3">
-              <span className="input-group-text">👁‍🗨</span>
-              <input type="date" {...register("startDate", { required: 'Start Date is required' })} 
-                className={`form-control ${errors.startDate? 'is-invalid' : ''}`} placeholder="start date.."  />
-              {errors.startDate && <div className="invalid-feedback">{errors.startDate.message}</div>}
-            </div>
-            <div className="input-group mb-3">
-              <span className="input-group-text">👁‍🗨</span>
-              <input type="date" {...register("endDate", { required: 'End Date is required' })} 
-                className={`form-control ${errors.endDate ? 'is-invalid' : ''}`} placeholder="End Date.."  />
-              {errors.endDate && <div className="invalid-feedback">{errors.endDate.message}</div>}
-            </div>
-            <div className="row justify-content-center">
-              <div className="col-12 col-sm-6">
-                <button className="mt-3 p-3 bg-dark text-white rounded-pill" disabled={!isDirty || !isValid}><b>Send your request</b></button>
+           <div className="container">
+             {!showMessage && 
+             <div className="input-group mt-3 justify-content-center">
+             <RangePicker
+               onChange={([startDate, endDate]) => setDates({startDate: startDate, endDate: endDate})}
+             />
+               <div className="input-group mb-3 justify-content-center">
+                 <div className="p-3">
+                   <button className="mt-3 p-3 rounded-pill"
+                   onClick={() =>{
+                  onClickCreateRental();
+                  setShowMessage(true)}}
+                   disabled={!dates.startDate || !dates.endDate}><b>Send your request</b></button>
+                 </div>
+               </div>
+           </div>
+
+             }
+           
+
+            <div className="d-flex justify-content-center">
+                    {showMessage && 
+                    <div className="row mb-2 d-flex justify-content-center">
+                    <h6 className="text-white lh-base">Congrats! The owner will contact you soon to agree the details of the rental!</h6>
+                    <br></br>
+                    <Link to='/items' className="text-white lh-lg">🤩...more items to rent?</Link>
+                    </div>
+                    }   
               </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    )
-
-
-}
+          </div> 
+        )
+    }
 
 
 RentalForm.defaultProps = {
@@ -109,3 +118,5 @@ export default RentalForm;
 // };
 
 // ReactDOM.render(<Calendar />, mountNode);
+
+

@@ -21,7 +21,7 @@ function ItemPage() {
      let isMounted = true;
      itemsService.detail(id)
         .then( item => {
-         
+                    
             if (isMounted) {
                 setItem(item)
             }
@@ -38,7 +38,7 @@ function ItemPage() {
 return item && (
 
     <>
-         <div className="container-fluid pt-5" style={{background: `url(${backgroundImage})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '450px', margin: 'auto', paddingBottom:'80px;'}}>
+         <div className="container-fluid pt-5" style={{background: `url(${backgroundImage})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '450px', margin: 'auto', paddingBottom:'80px'}}>
            <div className="py-5 container-fluid d-flex flex-row bd-highlight">
                 <div className="py-5 bd-highlight">
                 <div className="mt-3 row">
@@ -60,7 +60,7 @@ return item && (
                 </div>
            </div>
       </div>
-             <div className="container" style={{height:"500px"}}>
+             <div className="container" style={{height:'450px'}}>
                  <div className="row mt-5">
                      <div className="col-xs-12 col-sm-4">
                          <img src={item.image} className="img-fluid" alt={item.name} />
@@ -72,28 +72,39 @@ return item && (
                          <p>Renter: { item.renter.name }</p>
                          <p>Contact info:{ item.renter.email }</p>
                          
-                         <div className="d-flex flex-row bd-highlight mb-3">
+                         <div className="d-flex flex-row bd-highlight mb-1">
                           <div className="p-2 bd-highlight">
                                <div className="d-flex flex-row">
-                                    <div className="p-2">
+                                    <div className="">
                                     <button 
-                                        className="mt-3 p-3 badge bg-dark text-white rounded-pill"
+                                        className="p-3 badge bg-dark text-white rounded-pill"
                                         onClick={() => setShowForm(true)}
                                     >Choose the date
                                     </button>
                                     </div >
-                                    {showForm && 
-                                        <div className="mt-3 p-3">
-                                        <RentalForm showTime {...rental} onCreateRental={handleCreateRental}/>
-                                        </div>
-                                        }
-                                    
                                </div>
                           </div> 
                         </div>
                      </div>
                  </div>
             </div>
+            {showForm && 
+            <div className="container-fluid" style={{background: `url(${backgroundImage})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '450px', margin: 'auto', paddingBottom:'80px'}}>
+                <div className="d-flex row justify-content-center">
+                    <div className="black-box col col-sm-8 col-md-6 col-lg-3 mt-5 bg-dark pb-5 m-2">
+                            <div className="d-flex justify-content-center">
+                                <div className="mt-3">
+                                <RentalForm showTime {...rental} onCreateRental={handleCreateRental}/>
+                                </div>
+                            </div>
+                            
+                            
+                                
+                            
+                    </div>  
+                </div>
+            </div>
+            }
                  
                 
                     

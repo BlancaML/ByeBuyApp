@@ -19,6 +19,7 @@ module.exports.list = (req, res, next) => {
 module.exports.filter = (req,res,next) => {
     const { search, categories } = req.query;
     const criterial = {}
+
     if (search || categories) {
        criterial.$and = [] 
     }
@@ -30,14 +31,16 @@ module.exports.filter = (req,res,next) => {
             {
                 description: new RegExp(search, 'i')
             }
-        ]       })
-    } 
+        ]})
+    }
+
     if (categories) {
         criterial.$and.push({categories : categories})
     }
+    console.log(criterial)
 
     Item.find(criterial)
-        .then((items) => res.json(items, { search }))
+        .then((items) => res.json(items))
         .catch((error) => next(error));
 }
 
@@ -57,9 +60,10 @@ module.exports.detail = (req, res, next) => {
 
 
 module.exports.create = (req, res, next) => {
-    const data = { name, description, cost, image, location, categories } = req.body
+    const data = { name, description, cost,categories } = req.body
     Item.create({
         ...data,
+        image: req?.file?.path,
         renter: req.user.id
     })
     .then(item => res.status(201).json(item))

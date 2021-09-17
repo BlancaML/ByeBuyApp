@@ -21,7 +21,7 @@ const itemSchema = new mongoose.Schema({
     categories: {
         type: [{
             type: String,
-            enum: categories.map((c) => c.id)
+            enum: categories.map((c) => c)
         }],
         validate: {
             validator: function(categories) {
@@ -58,7 +58,7 @@ const itemSchema = new mongoose.Schema({
         },
         coordinates: {
             type: [Number],
-            required: true
+            
         }
     }
 }, {
@@ -75,7 +75,7 @@ const itemSchema = new mongoose.Schema({
             return ret
         }
 
-    },
+    },  
 
     toObject: {
         transform: (doc, ret) => {
