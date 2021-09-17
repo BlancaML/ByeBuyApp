@@ -9,7 +9,7 @@ module.exports.list = (req, res, next) => {
      
 }
 
-module.exports.detail = (req, res, next) => {
+module.exports.getUser= (req, res, next) => {
   if (req.params.id === 'me') {
     return res.json(req.user)
   }

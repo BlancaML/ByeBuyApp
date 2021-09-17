@@ -29,7 +29,7 @@ router.get('/authenticate/google/cb', auth.doLoginWithGoogle)
 
 // USER
 router.get('/users', users.list);
-router.get('/users/:id', users.detail);
+router.get('/users/:id', users.getUser);
 router.patch('/users/:id', secure.isAuthenticated, secure.isUser, users.update);
 router.delete('/users/:id', secure.isAuthenticated, secure.isUser, users.delete);
 

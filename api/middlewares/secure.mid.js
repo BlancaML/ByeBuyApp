@@ -17,7 +17,7 @@ module.exports.isUser = (req, res, next) => {
   if (req.params.id === 'me' || req.user.id == req.params.id) {
     next();
   } else {
-    next(createError(403))
+    next(createError(403, 'You are not authorized'))
   }
 };
 

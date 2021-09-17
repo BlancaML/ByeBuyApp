@@ -8,12 +8,12 @@ import './Header.css';
 
 function Header() {
   const history = useHistory()
-  const auth = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext)
 
   function handleLogout() {
     service.logout()
       .then(() => {
-        auth.logout()
+        logout()
         history.push("/login")
       })
   }
@@ -25,10 +25,8 @@ function Header() {
         <img src={logonavbar} style={{maxWidth: "150px"}} className="img" alt="logo-Bye-Buy"/>
         </Link>
           <div className="flex-row">
-            <span className="me-3">{auth.user?.name}</span>
-            <img className="flex-row me-3 avatar-img"src={auth.user?.avatar} alt={auth.user?.name}/>
-        
-            {!auth.user && (
+            
+            {!user && (
               <div className="container-fluid d-flex flex-row bd-highlight">
                 <div className="nav-link p-2 bd-highlight">
                 <Link to='/sign-up' className="p-3 badge rounded-pill bg-dark">SIGN UP</Link>
@@ -38,9 +36,15 @@ function Header() {
                 </div>
              </div>)}
       
-            {auth.user && (
+            {user && (
+              <>
+              <span className="me-3"> {user.name}</span>
+              <img className="flex-row me-3 avatar-img" src={user.avatar} alt={user.name}/>
               <button onClick={handleLogout} className="p-3 me-3 badge rounded-pill bg-dark">Logout</button>
+              </>
             )}
+            
+            
        </div>
       </div>
     </nav>

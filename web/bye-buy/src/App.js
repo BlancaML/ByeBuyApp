@@ -9,6 +9,7 @@ import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
 import ItemList from './components/items/item-list/ItemList';
 import ItemPage from './components/items/item-detail/ItemPage';
+import GoogleCallback from './components/auth/GoogleCallback';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/sign-up" component={SignUp} />
+          <Route exact path="/google/cb" component={GoogleCallback} />
               <div>
                 <Header/>
                 <Route exact path="/" component={HomeLogout} />
