@@ -73,7 +73,7 @@ function HomeLogout() {
                                    <h3 className="text-white">Renting on Buy-Bye isn’t just convenient and cost effective. By buying less and renting more, you’re also contributing to a circular economy, making better use of resources and helping to protect this wonderful planet we live on.</h3>
                                    <div className="d-flex flex-row mt-5">
                                         <div className="">
-                                        <button className="p-3 rounded-pill"
+                                        <button className="p-3 browse-item-link rounded-pill"
                                              onClick={() => setShowForm(true)}><b>List an item</b>
                                         </button>
                                         </div>

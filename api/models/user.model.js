@@ -88,6 +88,35 @@ const userSchema = new Schema({
 
 userSchema.index({ location: '2dsphere' });
 
+
+userSchema.virtual('items', {
+    ref: 'Item',
+    localField: '_id',
+    foreignField: 'renter',
+    justOne: false, 
+
+})
+
+userSchema.virtual('rentalRenter', {
+    ref: 'Rental',
+    localField: '_id',
+    foreignField: 'renter',
+    justOne: false, 
+
+})
+
+userSchema.virtual('rentalTenant', {
+    ref: 'Rental',
+    localField: '_id',
+    foreignField: 'tenant',
+    justOne: false, 
+
+})
+
+
+
+
+
 userSchema.virtual('feedbackGiven', {
     ref: 'Feedback',
     localField: '_id',
@@ -101,6 +130,8 @@ userSchema.virtual('feedbackReceived', {
     foreignField: 'sentTo',
     justOne: false, 
 })
+
+
 
 
 

@@ -38,9 +38,21 @@ function Header() {
       
             {user && (
               <>
-              <span className="me-3"> {user.name}</span>
-              <img className="flex-row me-3 avatar-img" src={user.avatar} alt={user.name}/>
-              <button onClick={handleLogout} className="p-3 me-3 badge rounded-pill bg-dark">Logout</button>
+                 
+                 
+                <li className="d-flex nav-item dropdown">
+                 <a className="mt-2 nav-link dropdown-toggle text-dark" href="/profile" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                   <span className="m-1 text-dark">{user.name}</span>
+                 </a>
+                 <img className="flex-row me-3 avatar-img" src={user.avatar} alt={user.name}/>
+                 <button onClick={handleLogout} className="p-4 me-3 badge rounded-pill bg-dark"><b>Logout</b></button> 
+                 <ul className="dropdown-menu m-1" aria-labelledby="navbarDropdown" style={{backgroundColor: "#09e7f7"}}>
+                   <li><a className="dropdown-item" href="/inbox">Inbox</a></li>
+                   <li><a className="dropdown-item" href="/my-rentals">Rentals</a></li>
+                   <li><a className="dropdown-item" href="/my-items">My Items</a></li>
+                 </ul>
+                 </li>
+                 
               </>
             )}
             
@@ -52,3 +64,20 @@ function Header() {
 }
 
 export default Header
+
+
+
+
+
+                
+
+
+
+
+            
+
+{/* <span className="me-3">{user.name}</span>
+                <Link to="/profile">
+                <img className="flex-row me-3 avatar-img" src={user.avatar} alt={user.name}/>
+                </Link>
+                <button onClick={handleLogout} className="p-3 me-3 badge rounded-pill bg-dark">Logout</button>  */}

@@ -1,6 +1,8 @@
 import { Link, useHistory } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import service from "../../services/users-service"
+import bgLogin from '../../img/login_background.png';
+import logofooter from '../../img/logo-white-tag.png';
 
 function SignUp() {
 
@@ -25,49 +27,64 @@ function SignUp() {
 
   return (
 
-    <div className="row row-cols-3">
-      <div className="col mx-auto">
-        <form className="mt-3 mb-3" onSubmit={handleSubmit(onRegisterFormSubmit)}>
+      <div>
+        <div className="container-fluid pt-5" style={{background: `url(${bgLogin})`, backgroundPosition: 'center', 
+        backgroundRepeat: 'no-repeat', backgroundSize: 'cover', 
+        height: '850px', margin: 'auto'}}>
+          <div className="d-flex row justify-content-center">
+            <div className="black-box col col-sm-8 col-md-6 col-lg-3 mt-5 bg-dark pb-5 m-2">
+              <div className="text-center pt-2 text-white">
+                <Link to='/'>
+                  <img src={logofooter} style={{maxWidth: "200px", position:"center"}} 
+                  className="img my-4" alt="logo-Bye-Buy"/>
+                </Link>
+              </div>
+              <form onSubmit={handleSubmit(onRegisterFormSubmit)}>
+              
 
-          <div className="input-group mb-2">
-            <span className="input-group-text"><i className="fa fa-envelope fa-fw"></i></span>
-            <input type="email" {...register("email", { required: 'Email is required' })}
-              className={`form-control ${errors.email ? 'is-invalid' : ''}`} placeholder="user@example.org" />
-            {errors.email && <div className="invalid-feedback">{errors.email.message}</div>}
+              <div className="input-group mb-2">
+                    <span className="input-group-text"><i className="fa fa-user fa-fw"></i></span>
+                    <input type="text" {...register("name", { required: 'User name is required' })}
+                      className={`custom-form-control form-control input-border py-1 ps-4 ${errors.name ? 'is-invalid' : ''}`} placeholder="Your Name" />
+                    {errors.name && <div className="invalid-feedback">{errors.name.message}</div>}
+              </div>
+
+                <div className="input-group mb-2">
+                  <span className="input-group-text"><i className="fa fa-envelope fa-fw"></i></span>
+                  <input
+                    type="email" {...register("email", { required: 'Email is required' })}
+                    placeholder="user@example.com"
+                    className={`custom-form-control form-control input-border py-1 ps-4 ${errors.email ? 'is-invalid' : ''}`}/>
+                  {errors.email && <div className="invalid-feedback">{errors.email.message}</div>}
+                </div>
+
+                <div className="input-group mb-2">
+                <span className="input-group-text"><i className="fa fa-user fa-fw"></i></span>
+                  <input
+                    type="password" {...register("password", { required: 'Password is required' })}
+                    placeholder="password"
+                    className={`custom-form-control form-control input-border py-1 ps-4 ${errors.password ? 'is-invalid' : ''}`}/>
+                  {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
+                </div>
+
+                <div className="input-group mb-2">
+                    <input type="file" {...register("avatar")}
+                      className={`custom-form-control form-control input-border ${errors.avatar ? 'is-invalid' : ''}`} placeholder="John Doe" />
+                    {errors.avatar && <div className="invalid-feedback">{errors.avatar.message}</div>}
+                  </div>
+
+                <div className="d-grid gap-2 mb-2">
+                <button type="submit" className="btn bg-app-bg mb-2 btn-white" disabled={Object.keys(errors).length !== 0}>Sign Up</button>  
+                </div>
+              </form>
+            </div>
           </div>
-
-          <div className="input-group mb-2">
-            <span className="input-group-text"><i className="fa fa-user fa-fw"></i></span>
-            <input type="text" {...register("name", { required: 'User name is required' })}
-              className={`form-control ${errors.name ? 'is-invalid' : ''}`} placeholder="John Doe" />
-            {errors.name && <div className="invalid-feedback">{errors.name.message}</div>}
-          </div>
-
-          <div className="input-group mb-2">
-            <span className="input-group-text"><i className="fa fa-lock fa-fw"></i></span>
-            <input type="password" {...register("password", { required: 'Password is required' })}
-              className={`form-control ${errors.password ? 'is-invalid' : ''}`} placeholder="Password" />
-            {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
-          </div>
-
-          <div className="input-group mb-2">
-            <span className="input-group-text"><i className="fa fa-user fa-fw"></i></span>
-            <input type="file" {...register("avatar")}
-              className={`form-control ${errors.avatar ? 'is-invalid' : ''}`} placeholder="John Doe" />
-            {errors.avatar && <div className="invalid-feedback">{errors.avatar.message}</div>}
-          </div>
-
-          <div className="d-grid gap-2">
-            <button className="btn btn-primary" type="submit" disabled={Object.keys(errors).length !== 0}>Sign Up</button>
-            <hr />
-            <a href={`${process.env.REACT_APP_API_BASE_URL}/authenticate/google`} className="btn btn-danger" role="button"><i className="fa fa-google" /> Login with Google</a>
-            <Link to="/login" className="btn btn-secondary" role="button">Login</Link>
-          </div>
-
-        </form>
-      </div>
-    </div>
+        </div>
+   </div>
   )
 }
 
 export default SignUp
+
+
+

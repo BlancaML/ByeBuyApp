@@ -75,8 +75,8 @@ function ItemForm({ onCreateItem }) {
             <select
               {...register("categories", { required: 'At least 1 Category is required' })}
               className={`form-select form-select-sm ${errors.categories ? 'is-invalid' : ''}`} 
-              placeholder="Categories" multiple>
-                <option >Choose at least 1 category...</option>
+              placeholder="Categories">
+                <option >Choose category...</option>
                 <option value="audio-visual-equipment">Audiovisual Equipment</option>
                 <option value="clothing">Clothing</option>
                 <option value="dj-equipment">DJ Equipment</option>
