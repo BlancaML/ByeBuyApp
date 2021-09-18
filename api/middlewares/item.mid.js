@@ -25,9 +25,11 @@ module.exports.exists = (req, res, next) => {
 
 // el user.owner está a false y pasa a true cuando crea un item
 module.exports.isRenter = (req, res, next) => {
-    if (req.user.id == req.item.renter) {
+    if (req.user.id == req.item.renter.id) {
       next()
     } else {
+      console.log(req.item.renter)
+      console.log(req.user.id)
       next(createError(403, 'You are not allowed to access to this item'))
     }
   }

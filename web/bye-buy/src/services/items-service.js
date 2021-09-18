@@ -18,7 +18,7 @@ const create = (item) => {
   data.append('description', item.description)
   data.append('cost', item.cost)
   data.append('categories', item.categories)
-  data.append('image', item.image)
+  data.append('image', item.image[0])
   
 
   return http.post('/items', data)

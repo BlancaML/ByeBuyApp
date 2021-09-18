@@ -60,7 +60,11 @@ module.exports.detail = (req, res, next) => {
 
 
 module.exports.create = (req, res, next) => {
+   
     const data = { name, description, cost,categories } = req.body
+    if (data.categories && !Array.isArray(data.categories)) {
+        data.categories = data.categories.split(',').map((c) => c.trim())
+    }
     Item.create({
         ...data,
         image: req?.file?.path,
@@ -81,10 +85,17 @@ module.exports.update = (req, res, next) => {
   
 
 module.exports.delete = (req, res, next) => {
-  Item.deleteOne({ _id: req.params.id })
+  const { id } = req.params
+  Item.findByIdAndDelete(id)
     .then(item => res.status(204).end())
     .catch(next)
 }
+
+// module.exports.delete = (req, res, next) => {
+//     Item.deleteOne({ _id: req.params.id })
+//       .then(item => res.status(204).end())
+//       .catch(next)
+//   }
 
 
 

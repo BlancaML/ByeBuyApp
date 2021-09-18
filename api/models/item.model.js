@@ -58,6 +58,7 @@ const itemSchema = new mongoose.Schema({
         },
         coordinates: {
             type: [Number],
+            default: [0,0]
             
         }
     }
@@ -70,7 +71,6 @@ const itemSchema = new mongoose.Schema({
             ret.id = doc._id;
             delete ret._id;
             delete ret.__v;
-            ret.items = doc.items || []
             ret.location = doc.location.coordinates.reverse()
             return ret
         }
@@ -82,7 +82,6 @@ const itemSchema = new mongoose.Schema({
             ret.id = doc._id;
             delete ret._id;
             delete ret.__v;
-            ret.items = doc.items || []
             return ret
         }
     }

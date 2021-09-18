@@ -6,7 +6,7 @@ import itemsService from '../../../services/items-service';
 
 
 function ItemForm({ onCreateItem }) {
-  const [currentCategory, setCurrentCategory] = useState([])
+  
 
   const { register, handleSubmit, setError, reset, formState: 
     { errors, isValid, isDirty } } = useForm({
@@ -30,7 +30,7 @@ function ItemForm({ onCreateItem }) {
         }
       })
   };
-  console.log(currentCategory)
+ 
 
   return (
     <div className="row mb-3">
@@ -74,12 +74,9 @@ function ItemForm({ onCreateItem }) {
           <div className="input-group mb-3">
           <span className="input-group-text" id="basic-addon1">🔎</span>
             <select
-              value={currentCategory}
-              onChange={(e) => setCurrentCategory(e.target.value)} 
-              id="inputGroupSelect01" 
               {...register("categories", { required: 'At least 1 Category is required' })}
               className={`form-select form-select-sm ${errors.categories ? 'is-invalid' : ''}`} 
-              placeholder="Categories">
+              placeholder="Categories" multiple>
                 <option >Choose at least 1 category...</option>
                 <option value="audio-visual-equipment">Audiovisual Equipment</option>
                 <option value="clothing">Clothing</option>
