@@ -16,8 +16,10 @@ const app = express();
 
 
 /** Middlewares */
+app.use(express.static(`${__dirname}/react-app`));
 app.use(logger('dev'));
 app.use(session);
+
 app.use(cors);
 app.use(passport.initialize());
 app.use(passport.session());
@@ -27,7 +29,9 @@ app.use(express.json());
 const routes = require('./config/routes.config');
 app.use('/api', routes);
 
-
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/react-app/index.html`);
+})
 /*Error Handling*/
 
 app.use((req, res, next) => next(createError(404, 'Route not found')))

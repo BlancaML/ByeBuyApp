@@ -1,4 +1,5 @@
 const express = require('express');
+const createError = require('http-errors');
 const secure = require('../middlewares/secure.mid');
 const item = require('../middlewares/item.mid');
 const rental = require('../middlewares/rental.mid');
@@ -79,7 +80,7 @@ router.delete('/items/:itemId/rentals/:id',
 // // MESSAGE 
 // router.get('/chats/messages/:chatId/create', secure.isAuthenticated, messages.create)
 
-
+router.use((req, res, next) => next(createError(404, 'Route not found')))
 
 module.exports = router;
 
